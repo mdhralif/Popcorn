@@ -1,0 +1,30 @@
+server:
+  port: 0
+spring:
+  application:
+    name: userService
+  ## MongoDB Properties - MongoDB Atlas
+  data:
+    mongodb:
+      uri: mongodb+srv://mdhRALIF:alif2003@cluster0.jigw0.mongodb.net/cine_visionDB?retryWrites=true&w=majority&appName=Cluster0
+      database: cine_visionDB
+      auto-index-creation: true
+  ## Zipkin and Sleuth Properties - DISABLED FOR LOCAL RUN
+  # zipkin:
+  #   base-url: http://localhost:9411
+  # sleuth:
+  #   sampler:
+  #     probability: 1.0
+
+## Eureka Properties
+eureka:
+  client:
+    service-url:
+      defaultZone: http://eureka:password@localhost:8761/eureka
+    fetch-registry: true
+    register-with-eureka: true
+
+# JWT properties
+jwt:
+  secret:
+    key: secret_secret_secret_secret_secret_secret_secret_secret_secret_secret
