@@ -1,0 +1,804 @@
+{
+	"info": {
+		"_postman_id": "12345678-1234-1234-1234-123456789012",
+		"name": "CineVision Microservice APIs",
+		"description": "Complete API collection for CineVision with dummy data for testing Neon DB integration",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "User Service APIs",
+			"item": [
+				{
+					"name": "User Registration",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"firstName\": \"John\",\n  \"lastName\": \"Doe\",\n  \"email\": \"john.doe@example.com\",\n  \"password\": \"password123\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/user/users/add",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"user",
+								"users",
+								"add"
+							]
+						}
+					}
+				},
+				{
+					"name": "Admin Registration",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"firstName\": \"Admin\",\n  \"lastName\": \"User\",\n  \"email\": \"admin@cinevision.com\",\n  \"password\": \"admin123\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/user/users/add",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"user",
+								"users",
+								"add"
+							]
+						}
+					}
+				},
+				{
+					"name": "User Login",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"email\": \"john.doe@example.com\",\n  \"password\": \"password123\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/user/auth/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"user",
+								"auth",
+								"login"
+							]
+						}
+					}
+				},
+				{
+					"name": "Admin Login",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"email\": \"admin@cinevision.com\",\n  \"password\": \"admin123\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/user/auth/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"user",
+								"auth",
+								"login"
+							]
+						}
+					}
+				},
+				{
+					"name": "Check if User Exists",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/user/users/isExist/john.doe@example.com",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"user",
+								"users",
+								"isExist",
+								"john.doe@example.com"
+							]
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "Movie Service APIs",
+			"item": [
+				{
+					"name": "Categories",
+					"item": [
+						{
+							"name": "Get All Categories",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/api/movie/categories/getall",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"movie",
+										"categories",
+										"getall"
+									]
+								}
+							}
+						}
+					]
+				},
+				{
+					"name": "Directors",
+					"item": [
+						{
+							"name": "Get All Directors",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/api/movie/directors/getall",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"movie",
+										"directors",
+										"getall"
+									]
+								}
+							}
+						},
+						{
+							"name": "Add Director - Christopher Nolan",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer {{admin_token}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"directorName\": \"Christopher Nolan\",\n  \"token\": \"{{admin_token}}\"\n}"
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/movie/directors/add",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"movie",
+										"directors",
+										"add"
+									]
+								}
+							}
+						},
+						{
+							"name": "Add Director - Steven Spielberg",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer {{admin_token}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"directorName\": \"Steven Spielberg\",\n  \"token\": \"{{admin_token}}\"\n}"
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/movie/directors/add",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"movie",
+										"directors",
+										"add"
+									]
+								}
+							}
+						},
+						{
+							"name": "Add Director - Quentin Tarantino",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer {{admin_token}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"directorName\": \"Quentin Tarantino\",\n  \"token\": \"{{admin_token}}\"\n}"
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/movie/directors/add",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"movie",
+										"directors",
+										"add"
+									]
+								}
+							}
+						},
+						{
+							"name": "Add Director - Martin Scorsese",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer {{admin_token}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"directorName\": \"Martin Scorsese\",\n  \"token\": \"{{admin_token}}\"\n}"
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/movie/directors/add",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"movie",
+										"directors",
+										"add"
+									]
+								}
+							}
+						},
+						{
+							"name": "Add Director - James Cameron",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer {{admin_token}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"directorName\": \"James Cameron\",\n  \"token\": \"{{admin_token}}\"\n}"
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/movie/directors/add",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"movie",
+										"directors",
+										"add"
+									]
+								}
+							}
+						}
+					]
+				},
+				{
+					"name": "Movies",
+					"item": [
+						{
+							"name": "Get Displaying Movies",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/api/movie/movies/displayingMovies",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"movie",
+										"movies",
+										"displayingMovies"
+									]
+								}
+							}
+						},
+						{
+							"name": "Get Coming Soon Movies",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/api/movie/movies/comingSoonMovies",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"movie",
+										"movies",
+										"comingSoonMovies"
+									]
+								}
+							}
+						},
+						{
+							"name": "Get Movie by ID",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/api/movie/movies/1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"movie",
+										"movies",
+										"1"
+									]
+								}
+							}
+						},
+						{
+							"name": "Add Movie - Inception",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer {{admin_token}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"movieName\": \"Inception\",\n  \"description\": \"A skilled thief is given a chance at redemption if he can successfully perform an inception.\",\n  \"duration\": 148,\n  \"releaseDate\": \"2010-07-16T00:00:00.000Z\",\n  \"trailerUrl\": \"https://www.youtube.com/watch?v=YoHD9XEInc0\",\n  \"isInVision\": true,\n  \"categoryId\": 1,\n  \"directorId\": 1,\n  \"actors\": [],\n  \"cities\": [],\n  \"userAccessToken\": \"{{admin_token}}\"\n}"
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/movie/movies/add",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"movie",
+										"movies",
+										"add"
+									]
+								}
+							}
+						},
+						{
+							"name": "Add Movie - The Dark Knight",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer {{admin_token}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"movieName\": \"The Dark Knight\",\n  \"description\": \"When the menace known as the Joker wreaks havoc and chaos on the people of Gotham, Batman must accept one of the greatest psychological and physical tests.\",\n  \"duration\": 152,\n  \"releaseDate\": \"2008-07-18T00:00:00.000Z\",\n  \"trailerUrl\": \"https://www.youtube.com/watch?v=EXeTwQWrcwY\",\n  \"isInVision\": true,\n  \"categoryId\": 1,\n  \"directorId\": 1,\n  \"actors\": [],\n  \"cities\": [],\n  \"userAccessToken\": \"{{admin_token}}\"\n}"
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/movie/movies/add",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"movie",
+										"movies",
+										"add"
+									]
+								}
+							}
+						},
+						{
+							"name": "Add Movie - Pulp Fiction",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer {{admin_token}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"movieName\": \"Pulp Fiction\",\n  \"description\": \"The lives of two mob hitmen, a boxer, a gangster and his wife intertwine in four tales of violence and redemption.\",\n  \"duration\": 154,\n  \"releaseDate\": \"1994-10-14T00:00:00.000Z\",\n  \"trailerUrl\": \"https://www.youtube.com/watch?v=s7EdQ4FqbhY\",\n  \"isInVision\": true,\n  \"categoryId\": 2,\n  \"directorId\": 3,\n  \"actors\": [],\n  \"cities\": [],\n  \"userAccessToken\": \"{{admin_token}}\"\n}"
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/movie/movies/add",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"movie",
+										"movies",
+										"add"
+									]
+								}
+							}
+						},
+						{
+							"name": "Add Movie - Avatar",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer {{admin_token}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"movieName\": \"Avatar\",\n  \"description\": \"A paraplegic Marine dispatched to the moon Pandora on a unique mission becomes torn between following his orders and protecting the world he feels is his home.\",\n  \"duration\": 162,\n  \"releaseDate\": \"2009-12-18T00:00:00.000Z\",\n  \"trailerUrl\": \"https://www.youtube.com/watch?v=5PSNL1qE6VY\",\n  \"isInVision\": false,\n  \"categoryId\": 1,\n  \"directorId\": 5,\n  \"actors\": [],\n  \"cities\": [],\n  \"userAccessToken\": \"{{admin_token}}\"\n}"
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/movie/movies/add",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"movie",
+										"movies",
+										"add"
+									]
+								}
+							}
+						},
+						{
+							"name": "Add Movie - Goodfellas",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer {{admin_token}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"movieName\": \"Goodfellas\",\n  \"description\": \"The story of Henry Hill and his life in the mob, covering his relationship with his wife Karen Hill and his mob partners.\",\n  \"duration\": 146,\n  \"releaseDate\": \"1990-09-21T00:00:00.000Z\",\n  \"trailerUrl\": \"https://www.youtube.com/watch?v=qo5jJpHtI40\",\n  \"isInVision\": true,\n  \"categoryId\": 2,\n  \"directorId\": 4,\n  \"actors\": [],\n  \"cities\": [],\n  \"userAccessToken\": \"{{admin_token}}\"\n}"
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/movie/movies/add",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"movie",
+										"movies",
+										"add"
+									]
+								}
+							}
+						}
+					]
+				},
+				{
+					"name": "Actors",
+					"item": [
+						{
+							"name": "Get All Actors",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/api/movie/actors/getall",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"movie",
+										"actors",
+										"getall"
+									]
+								}
+							}
+						},
+						{
+							"name": "Get Actors by Movie ID",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/api/movie/actors/getActorsByMovieId/1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"movie",
+										"actors",
+										"getActorsByMovieId",
+										"1"
+									]
+								}
+							}
+						},
+						{
+							"name": "Add Actors to Inception",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer {{admin_token}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"movieId\": 1,\n  \"actorNameList\": [\n    \"Leonardo DiCaprio\",\n    \"Marion Cotillard\",\n    \"Tom Hardy\",\n    \"Ellen Page\",\n    \"Ken Watanabe\"\n  ],\n  \"token\": \"{{admin_token}}\"\n}"
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/movie/actors/add",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"movie",
+										"actors",
+										"add"
+									]
+								}
+							}
+						},
+						{
+							"name": "Add Actors to The Dark Knight",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer {{admin_token}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"movieId\": 2,\n  \"actorNameList\": [\n    \"Christian Bale\",\n    \"Heath Ledger\",\n    \"Aaron Eckhart\",\n    \"Maggie Gyllenhaal\",\n    \"Gary Oldman\"\n  ],\n  \"token\": \"{{admin_token}}\"\n}"
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/movie/movies/add",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"movie",
+										"actors",
+										"add"
+									]
+								}
+							}
+						},
+						{
+							"name": "Add Actors to Pulp Fiction",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer {{admin_token}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"movieId\": 3,\n  \"actorNameList\": [\n    \"John Travolta\",\n    \"Samuel L. Jackson\",\n    \"Uma Thurman\",\n    \"Bruce Willis\",\n    \"Ving Rhames\"\n  ],\n  \"token\": \"{{admin_token}}\"\n}"
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/movie/actors/add",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"movie",
+										"actors",
+										"add"
+									]
+								}
+							}
+						}
+					]
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "admin_token",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "user_token",
+			"value": "",
+			"type": "string"
+		}
+	]
+}
